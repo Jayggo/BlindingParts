@@ -1,14 +1,45 @@
 <?php
 
-    
-
     if (!empty($_POST['email'])){
 
+        $message = ' ';
         $email = $_POST['email'];
 
-        session_start();
-        $_SESSION['email'] = $email;
-        header ("location:../index.php");
+        try{
+
+                require_once('connect.php');
+
+                $connect = $conexion->getConn();
+
+                $sql = "SELECT * FROM usuario WHERE email = '$email'";
+
+                $resultado = $connect->query($sql);
+
+                $dato = $resultado->fetch_assoc();
+
+
+                if (isset($dato['email'])){
+
+                    session_start();
+                    $_SESSION['email'] = $email;
+                    $nombre = $dato['nombre'];
+                    $apellido = $dato['apellido'];
+                    $puesto = $dato['puesto'];
+                    header ("location:../index.php?nombre=$nombre&apellido=$apellido&puesto=$puesto");
+
+                }else{
+
+                    $message = 'Usuario no encontrado. Si persiste el problema comuniquese con soporte.';
+
+                }
+
+        }catch(Exception $e){
+
+            $error = $e->getMessage();
+
+        }
+        
+        mysqli_close($connect);
     }
 
 
@@ -28,6 +59,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS-->
     <link rel="stylesheet" href="../css/index.css">
+    <!-- CSS Responsive-->
+    <link rel="stylesheet" href="../css/responsive.css">    
     <!-- Custom Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
@@ -57,8 +90,8 @@
                         <a class="nav-link" href="../index.php">Inicio</a>
                     </li>
                 </ul>
-                <form class="form-inline mt-3" style = "margin-left: 60px;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search">
+                <form class="form-inline mt-3 search-form" style = "margin-left: 60px;" action = "search.php" method = "get">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search" name = "search-form">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -88,7 +121,18 @@
                     <input type="email" class="form-control font-weight-bold" id="email-form" aria-describedby="emailHelp" placeholder="Ingresa el e-mail autorizado" name = "email">
                 </div>
                 <button type="submit" class="btn btn-outline-light font-weight-bold">Entrar</button>
+                
+
             </form>
+            <small class = "ml-5 font-weight-bold text-danger">
+                    <?php 
+                        if (!empty($message)){
+
+                            echo $message;
+
+                        }
+                    ?>
+                </small>
         </div>
     </header>
 
@@ -101,9 +145,9 @@
     <footer class = "font-weight-bold">
       <div class ="footer-lists">
       <ul>
-          <li class = "list-project"><a href="footer.php?sel=faq"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
-          <li class = "list-contact"><a href="footer.php?sel=legal"><i class="far fa-paper-plane"></i> Contacto</a></li>
-          <li class = "list-legal"><a href="footer.php?sel=services"><i class="fas fa-file-contract"></i> Legal</a></li>
+          <li class = "list-project"><a href="footer.php?sel=about"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
+          <li class = "list-contact"><a href="contact.php"><i class="far fa-paper-plane"></i> Contacto</a></li>
+          <li class = "list-legal"><a href="footer.php?sel=legal"><i class="fas fa-file-contract"></i> Legal</a></li>
         </ul>
         <ul>
           <li class = "list-ig"><a href="https://www.instagram.com/Jayggo"><i class = "fab fa-instagram"></i> Instagram</a></li>

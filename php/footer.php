@@ -1,3 +1,7 @@
+<?php
+
+    session_start();
+?>
 <!doctype html>
 <html lang="es">
   <head>
@@ -11,6 +15,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS-->
     <link rel="stylesheet" href="../css/index.css">
+    <!-- CSS Responsive-->
+    <link rel="stylesheet" href="../css/responsive.css">    
     <!-- Custom Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
@@ -40,8 +46,8 @@
                         <a class="nav-link" href="../index.php">Inicio</a>
                     </li>
                 </ul>
-                <form class="form-inline mt-3" style = "margin-left: 60px;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search">
+                <form class="form-inline mt-3 search-form" style = "margin-left: 60px;" action = "search.php" method = "get">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search" name = "search-form">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -65,7 +71,19 @@
 
     <header>
         <div class = "background">
-                <div>FOOTER</div>
+            <?php
+                $value = $_GET['sel'];
+
+                if ($value == 'about'){
+
+
+
+                
+            ?>
+            <div class = "font-weight-bold m-auto text-center w-50">BlindingParts es un proyecto sin fines lucrativos asignado por EMQU Technologies a Jairo Gómez como prueba de ingreso para demostrar habilidades y competencias en el desarrollo de software.</div>
+            <?php }else if ($value == 'legal'){?>
+            <div class = "font-weight-bold m-auto text-center w-50">Está prohibida la venta o distribución de este proyecto sin la autorización de Jairo Gómez y EMQU Technologies.</div>
+            <?php }?>
         </div>
     </header>
 
@@ -78,9 +96,9 @@
     <footer class = "font-weight-bold">
       <div class ="footer-lists">
       <ul>
-          <li class = "list-project"><a href="footer.php?sel=faq"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
-          <li class = "list-contact"><a href="footer.php?sel=legal"><i class="far fa-paper-plane"></i> Contacto</a></li>
-          <li class = "list-legal"><a href="footer.php?sel=services"><i class="fas fa-file-contract"></i> Legal</a></li>
+          <li class = "list-project"><a href="footer.php?sel=about"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
+          <li class = "list-contact"><a href="contact.php"><i class="far fa-paper-plane"></i> Contacto</a></li>
+          <li class = "list-legal"><a href="footer.php?sel=legal"><i class="fas fa-file-contract"></i> Legal</a></li>
         </ul>
         <ul>
           <li class = "list-ig"><a href="https://www.instagram.com/Jayggo"><i class = "fab fa-instagram"></i> Instagram</a></li>

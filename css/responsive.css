@@ -1,0 +1,203 @@
+@media screen and (max-width: 1045px){
+
+    .search-form{
+
+        margin-left: 0px !important;
+        margin: auto !important;
+
+    }
+
+
+}
+
+@media screen and (max-width: 880px){
+
+    .brand h1{
+
+        font-size: 5em;
+
+    }
+
+    .user-email h4{
+
+        font-size: 1.2em;
+
+    }
+
+    
+    .nav-list li{
+
+        font-size: 0.8em;
+
+    }
+
+    .search-form input, .search-form button{
+
+        font-size: 0.8em;
+
+    }
+
+    .section{
+
+        font-size: 1.3em;
+
+    }
+
+    .carousel-item img {
+
+        height: 370px;
+        object-fit: cover;
+
+    }
+
+    
+    .footer-lists ul li{
+
+        font-size: 0.8em;
+
+    }
+
+    .copy{
+
+        font-size: 0.8em;
+
+    }
+
+
+
+}
+
+@media screen and (max-width: 700px){
+
+    .nav-list{
+
+        margin-left: -30px;
+
+    }
+
+
+    
+    .brand h1{
+
+        font-size: 3.5em;
+
+    }
+
+    .carousel-item img {
+
+        height: 300px;
+
+    }
+
+    .search-form input  {
+
+     width: 40%;
+     font-size: 0.5em;
+
+    }
+
+    .search-form button{
+
+        font-size: 0.5em;
+
+    }
+
+   
+
+}
+
+@media screen and (max-width: 575px){
+
+
+    .search-form input, .search-form button{
+
+        font-size: 0.45em;
+
+    }
+
+    .search-form input{
+
+        width: 70%;
+
+    }
+
+    .carousel-item img {
+
+        height: 300px;
+        width: 400px !important;
+    }
+
+    .nav-list li{
+
+        font-size: 0.65em;
+
+    }
+
+}
+
+@media screen and (max-width: 500px){
+
+    .brand h1{
+
+        font-size: 2.5em;
+
+    }
+
+    .nav-container{
+
+        width: 40%;
+
+    }
+
+    .nav-list{
+
+        margin-bottom: 0;
+
+    }
+
+    .search-form{
+
+        margin-top: 0px !important;
+
+    }
+
+    .section-three div{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+
+    .carousel-item img {
+
+        height: 300px;
+        width: 400px !important;
+
+    }
+
+    .carousel-caption h3{
+
+        font-size: 0.8em;
+
+    }
+
+    .carousel-caption p, .carousel-caption a {
+
+        font-size: 0.6em;
+
+
+    }
+
+}
+
+@media screen and (max-width: 450px){
+
+    .carousel-item img {
+
+        width: 320px !important;
+
+    }
+
+}

@@ -1,6 +1,14 @@
 <?php
 
     session_start();
+
+    if (isset($_GET['nombre'])){
+
+        $nombre = $_GET['nombre'];
+        $apellido = $_GET['apellido'];
+        $puesto = $_GET['puesto'];
+
+    }
 ?>
 
 <!doctype html>
@@ -16,9 +24,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS-->
     <link rel="stylesheet" href="css/index.css">
+    <!-- CSS Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+
 
 
 
@@ -45,9 +56,9 @@
                         <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                 </ul>
-                <form class="form-inline mt-3" style = "margin-left: 60px;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search">
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                <form class="form-inline mt-3 search-form" style = "margin-left: 60px;" action = "php/search.php" method = "get">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search" name = "search-form">
+                    <button class="btn btn-outline-light my-2 my-sm-0 text-center" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
         </div>
@@ -71,7 +82,8 @@
     <header>
         <div class = "background">
             <div class = "brand"><h1>BlindingParts SA</h1></div>
-            <p>¡Bienvenido!</p>
+            <p>¡Bienvenido<?php if(isset($nombre)){echo ", ".$nombre." ".$apellido;}?>!</p>
+            <p class = "font-italic"><?php if(isset($nombre)){echo $puesto;}?></p>
             <?php
                 if (!isset($_SESSION['email'])){            
             ?>
@@ -115,16 +127,16 @@
                         <h3 class = "font-weight-bold">Presmutor AXE</h3>
                         <p>Pieza polivalente que lleva el ciguenal externo</p>
                         <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
-                        <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
+                        <a href="php/repuesto.php?" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="img/background-parts.jpg" alt="Second slide" height = "500px">
-                    <div class = "carousel-caption d-none d-md-block">
+                    <div class = "carousel-caption d-md-block">
                         <h3 class = "font-weight-bold">Presmutor AXE</h3>
                         <p>Pieza polivalente que lleva el ciguenal externo</p>
                         <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
-                        <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
+                        <a href="php/repuesto.php?" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -133,7 +145,7 @@
                         <h3 class = "font-weight-bold">Presmutor AXE</h3>
                         <p>Pieza polivalente que lleva el ciguenal externo</p>
                         <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
-                        <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
+                        <a href="php/repuesto.php?" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
             </div>
@@ -160,9 +172,9 @@
     <footer class = "font-weight-bold">
       <div class ="footer-lists">
         <ul>
-          <li class = "list-project"><a href="php/footer.php?sel=faq"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
-          <li class = "list-contact"><a href="php/footer.php?sel=legal"><i class="far fa-paper-plane"></i> Contacto</a></li>
-          <li class = "list-legal"><a href="php/footer.php?sel=services"><i class="fas fa-file-contract"></i> Legal</a></li>
+          <li class = "list-project"><a href="php/footer.php?sel=about"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
+          <li class = "list-contact"><a href="php/contact.php"><i class="far fa-paper-plane"></i> Contacto</a></li>
+          <li class = "list-legal"><a href="php/footer.php?sel=legal"><i class="fas fa-file-contract"></i> Legal</a></li>
         </ul>
         <ul>
           <li class = "list-ig"><a href="https://www.instagram.com/Jayggo"><i class = "fab fa-instagram"></i> Instagram</a></li>

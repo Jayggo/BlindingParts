@@ -16,7 +16,7 @@
     <!-- Custom CSS-->
     <link rel="stylesheet" href="../css/index.css">
     <!-- CSS Responsive-->
-    <link rel="stylesheet" href="../css/responsive.css">    
+    <link rel="stylesheet" href="../css/responsive.css">
     <!-- Custom Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
   <div class="pos-f-t fixed-top">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class=" font-weight-bold text-white nav-container">
-            <ul class = "nav-list">
+                <ul class = "nav-list">
                     <li class="nav-item">
                         <?php
                             if (!isset($_SESSION['email'])){
@@ -71,7 +71,7 @@
 
     <header>
         <div class = "background">
-                <div class = "font-weight-bold m-auto text-center w-50">Si tiene algún problema técnico con el sitio web comuníquese a la dirección de correo electrónico gomezjairo14@gmail.com explicando la problemática. El problema será resuelto a la mayor brevedad posible.</div>
+                <div>SEARCH</div>
         </div>
     </header>
 
