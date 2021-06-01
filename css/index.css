@@ -1,0 +1,194 @@
+
+
+body{
+
+    background: rgb(24,16,7);
+    background: linear-gradient(150deg, rgba(24,16,7,1) 51%, rgba(194,132,60,1) 82%);
+    font-family: 'Lato', sans-serif;
+}
+
+.nav-container{
+
+    background: rgba(0,0,0,.4);
+    width: 30%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.nav-list li{
+
+    list-style-type: none;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-list li a{
+    color: white;
+}
+
+.nav-list li a:hover{
+
+    opacity: .5;
+
+}
+
+header{
+
+    width: 100%;
+    height: 40em;
+    background-image: url('../img/background-parts.jpg');
+    background-size:cover;
+
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+.brand h1{
+
+    font-size: 7em;
+    font-weight: bolder;
+    letter-spacing: 3.5px;
+}
+
+header div a {
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+header p{
+
+    margin-top: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    
+}
+
+.login-button{
+
+    margin-top: 5em;
+    font-weight: bold;
+}
+
+.login-button:hover{
+
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+}
+
+.section{
+    width: 100%;
+    height: 15em;
+    background: rgb(24,16,7);
+    background: linear-gradient(150deg, rgba(24,16,7,1) 51%, rgba(194,132,60,1) 82%);
+    color: white;
+    font-size: 1.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-two{
+
+    background: rgb(24,16,7);
+    background: linear-gradient(30deg, rgba(24,16,7,1) 51%, rgba(194,132,60,1) 82%);
+
+}
+
+.section-three{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.section-four{
+
+    height: 25em;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+
+    background: #292b2c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-lists{
+
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+
+.footer-lists ul{
+
+    
+    list-style-type: none;
+    margin: auto;
+    
+}
+
+.footer-lists ul li{
+    margin: auto;
+    margin-bottom: 20px;
+
+}
+
+.footer-lists ul li a{
+    margin: auto;
+    text-decoration: none;
+    color :white;
+}
+
+.footer-lists ul li a:hover{
+
+    opacity: .6;
+}
+
