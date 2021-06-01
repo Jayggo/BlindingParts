@@ -1,3 +1,8 @@
+<?php
+
+    session_start();
+?>
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -25,10 +30,19 @@
             <div class=" font-weight-bold text-white nav-container">
                 <ul class = "nav-list">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ingresar a mi cuenta autorizada</a>
+                        <?php
+                            if (!isset($_SESSION['email'])){
+                        ?>
+                        <a class="nav-link" href="php/login.php">Ingresar a mi cuenta autorizada</a>
+                        <?php }else{?>
+                        <a class="nav-link" href="php/sign-out.php">Salir de mi cuenta </a>
+                        <?php }?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contactarse con soporte</a>
+                        <a class="nav-link" href="php/contact.php">Contactarse con soporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Inicio</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-3" style = "margin-left: 60px;">
@@ -44,11 +58,28 @@
         </nav>
     </div>
 
+    <?php
+        if (isset($_SESSION['email'])){
+    ?>
+    <div class = "fixed-top user-email text-white d-flex justify-content-end p-3 w-50 ml-auto">
+        <h4 class = "text-weight-bold"><?php echo $_SESSION['email'];?></h4>
+    </div>
+    <?php
+        }
+    ?>
+
     <header>
         <div class = "background">
             <div class = "brand"><h1>BlindingParts SA</h1></div>
             <p>¡Bienvenido!</p>
-            <a href="http://" class = "btn btn-outline-light login-button">Ingrese con su e-mail autorizado</a>
+            <?php
+                if (!isset($_SESSION['email'])){            
+            ?>
+            <a href="php/login.php" class = "btn btn-outline-light login-button">Ingrese con su e-mail autorizado</a>
+            <?php }else{
+            ?>
+             <a href="php/search.php" class = "btn btn-outline-light login-button">Buscar repuestos o piezas</a>
+             <?php }?>
         </div>
     </header>
 
@@ -61,8 +92,12 @@
     <div class ="section section-three">
         <p class = "p-5 font-weight-bold text-center">¿Qué necesita en este momento?</p>
         <div>
-            <a href="http://" class = "btn btn-outline-light  font-weight-bold">Buscar repuestos y piezas</a>
-            <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ingresar a mi cuenta autorizada</a>
+            <a href="php/search.php" class = "btn btn-outline-light  font-weight-bold">Buscar repuestos y piezas</a>
+            <?php if (!isset($_SESSION['email'])){?>
+            <a href="php/login.php" class = "btn btn-outline-light font-weight-bold ">Ingresar a mi cuenta autorizada</a>
+            <?php }else{?>
+            <a href="php/sign-out.php" class = "btn btn-outline-light font-weight-bold ">Salir de esta cuenta</a>
+            <?php }?>
         </div>
     </div>
     <!--------------------CAROUSEL------------------->
@@ -125,9 +160,9 @@
     <footer class = "font-weight-bold">
       <div class ="footer-lists">
         <ul>
-          <li class = "list-project"><a href="footer.php?sel=faq"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
-          <li class = "list-contact"><a href="footer.php?sel=legal"><i class="far fa-paper-plane"></i> Contacto</a></li>
-          <li class = "list-legal"><a href="footer.php?sel=services"><i class="fas fa-file-contract"></i> Legal</a></li>
+          <li class = "list-project"><a href="php/footer.php?sel=faq"><i class="fas fa-project-diagram"></i> Acerca de este proyecto</a></li>
+          <li class = "list-contact"><a href="php/footer.php?sel=legal"><i class="far fa-paper-plane"></i> Contacto</a></li>
+          <li class = "list-legal"><a href="php/footer.php?sel=services"><i class="fas fa-file-contract"></i> Legal</a></li>
         </ul>
         <ul>
           <li class = "list-ig"><a href="https://www.instagram.com/Jayggo"><i class = "fab fa-instagram"></i> Instagram</a></li>
