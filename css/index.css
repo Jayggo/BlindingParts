@@ -128,7 +128,8 @@ header p{
 .section-four{
 
     height: 25em;
-
+    background: rgb(24,16,7);
+    background: linear-gradient(48deg, rgba(24,16,7,1) 49%, rgba(194,132,60,1) 84%);
 
 }
 

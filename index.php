@@ -80,6 +80,7 @@
                         <h3 class = "font-weight-bold">Presmutor AXE</h3>
                         <p>Pieza polivalente que lleva el ciguenal externo</p>
                         <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
+                        <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -88,6 +89,7 @@
                         <h3 class = "font-weight-bold">Presmutor AXE</h3>
                         <p>Pieza polivalente que lleva el ciguenal externo</p>
                         <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
+                        <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -96,6 +98,7 @@
                         <h3 class = "font-weight-bold">Presmutor AXE</h3>
                         <p>Pieza polivalente que lleva el ciguenal externo</p>
                         <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
+                        <a href="http://" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
             </div>
