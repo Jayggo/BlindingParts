@@ -21,7 +21,7 @@
 
         if ($resultado){
             
-            header("location: historial.php?success=true");
+            header("location: historial.php");
 
         }else{
 

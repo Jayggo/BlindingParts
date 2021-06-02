@@ -116,7 +116,7 @@
 
     <div class ="section section-one"><p class = "p-5 font-weight-bold text-center">Bienvenido al portal en español de BlindingParts SA para mecánicos autorizados.</p></div>
 
-    <div class ="section section-two"><p class = "p-5 font-weight-bold text-center">Aqui podrá visualizar el stock actual de las piezas y repuestos disponibles, seleccionar los necesarios y solicitarlos para su cuenta.</p></div>
+    <div class ="section section-two"><p class = "p-5 font-weight-bold text-center">Aqui podrá visualizar las piezas y repuestos disponibles, seleccionar los necesarios y asignarlos a su cuenta.</p></div>
 
     <div class ="section section-three">
         <p class = "p-5 font-weight-bold text-center">¿Qué necesita en este momento?</p>

@@ -2,41 +2,22 @@
 
     session_start();
 
-    if (isset($_GET['success'])){
-
-        echo "<script>alert ('El repuesto ha sido asignado correctamente');</script>";
-
-    }
-
     require_once('connect.php');
     $connect = $conexion->getConn();
     try { // HAGO PRIMERO EL INNER JOIN CON USUARIO Y USUARIO_REPUESTO
     
-        $sql = "SELECT usuario.email, usuario.puesto, usuario_repuesto.fecha_asignacion FROM usuario INNER JOIN usuario_repuesto ON usuario.id = usuario_repuesto.id_usuario";
+        $sql = "SELECT usuario.email, usuario.puesto, repuesto.nombre, repuesto.descripcion,usuario_repuesto.fecha_asignacion FROM usuario_repuesto INNER JOIN usuario ON usuario.id = usuario_repuesto.id_usuario INNER JOIN repuesto ON repuesto.id = usuario_repuesto.id_repuesto";
         $resultado = $connect->query($sql);
 
     } catch (Exception $e) {
         $error = $e->getMessage();
     }
 
-    $dato_usuario = array();
+    $dato = array();
     while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-      array_push($dato_usuario, $row);
+      array_push($dato, $row);
     }
 
-    try { // HAGO EL INNER JOIN CON REPUESTO Y USUARIO_REPUESTO
-    
-        $sql = "SELECT repuesto.nombre, repuesto.descripcion FROM repuesto INNER JOIN usuario_repuesto ON repuesto.id = usuario_repuesto.id_repuesto";
-        $resultado = $connect->query($sql);
-
-    } catch (Exception $e) {
-        $error = $e->getMessage();
-    }
-
-    $dato_repuesto = array();
-    while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-      array_push($dato_repuesto, $row);
-    }
 
 
     mysqli_close($connect);
@@ -54,6 +35,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS-->
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/historial.css">
     <!-- CSS Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">    
     <!-- Custom Font-->
@@ -108,38 +90,39 @@
         }
     ?>
 
-    <header>
+    <div class = "wrapper">
         <div class = "background">
-            <div>
-                <h1 class = "font-weight-bold mb-3">Historial de Asignaciones</h1>
+            <div class = "mt-5 mb-3 tittle">
+                <h1 class = "font-weight-bold ">Historial de Asignaciones</h1>
             </div>
-            <table class="table text-white" style = "width: 80%;">
-                <thead>
-                    <tr>
-                    <th scope="col">Fecha de Asignacion</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Puesto del Usuario</th>
-                    <th scope="col">Nombre del repuesto</th>
-                    <th scope="col">Descripcion del repuesto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        for ($i=0; $i < count($dato_usuario); $i++) { 
-                    ?>
-                    <tr class = "font-weight-bold">
-                    <th scope="row"><?php echo $dato_usuario[$i]['fecha_asignacion']?></th>
-                    <td><?php echo $dato_usuario[$i]['email']?></td>
-                    <td><?php echo $dato_usuario[$i]['puesto']?></td>
-                    <td><?php echo $dato_repuesto[$i]['nombre']?></td>
-                    <td><?php echo $dato_repuesto[$i]['descripcion']?></td>
-                    </tr>
-                    <?php }?>
-                </tbody>
-            </table>
-
+            <div class = "table-wrapper">
+                <table class="table table-bordered h-100 text-white" style = "width: 80%;">
+                    <thead>
+                        <tr class = "text-center bg-dark">
+                        <th scope="col">Fecha de Asignacion</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Puesto del Usuario</th>
+                        <th scope="col">Nombre del repuesto</th>
+                        <th scope="col">Descripcion del repuesto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            for ($i=0; $i < count($dato); $i++) { 
+                        ?>
+                        <tr class = "font-weight-bold text-center">
+                        <th scope="row"><?php echo $dato[$i]['fecha_asignacion']?></th>
+                        <td><?php echo $dato[$i]['email']?></td>
+                        <td><?php echo $dato[$i]['puesto']?></td>
+                        <td><?php echo $dato[$i]['nombre']?></td>
+                        <td><?php echo $dato[$i]['descripcion']?></td>
+                        </tr>
+                        <?php }?>
+                    </tbody>
+                </table>
+            </div>                  
         </div>
-    </header>
+    </div>
 
 
 

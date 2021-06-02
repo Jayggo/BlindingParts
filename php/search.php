@@ -43,6 +43,9 @@
                         <a class="nav-link" href="contact.php">Contactarse con soporte</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="historial.php">Historial de Asignaciones</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../index.php">Inicio</a>
                     </li>
                 </ul>
