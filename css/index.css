@@ -38,6 +38,13 @@ body{
 
 }
 
+.search-form input{
+
+    color: black;
+    font-weight: bold;
+
+}
+
 header{
 
     width: 100%;

@@ -2,17 +2,6 @@
 
     session_start();
 
-    if (isset($_GET['nombre'])){
-
-        $nombre = $_GET['nombre'];
-        $apellido = $_GET['apellido'];
-        $puesto = $_GET['puesto'];
-
-        $_SESSION['nombre'] = $nombre;
-        $_SESSION['apellido'] = $apellido;
-        $_SESSION['puesto'] = $puesto;
-    }
-
     try {
         require_once('php/connect.php');
 
@@ -76,6 +65,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="php/contact.php">Contactarse con soporte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="php/historial.php">Historial de Asignaciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Inicio</a>

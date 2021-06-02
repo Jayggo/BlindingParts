@@ -22,10 +22,11 @@
 
                     session_start();
                     $_SESSION['email'] = $email;
-                    $nombre = $dato['nombre'];
-                    $apellido = $dato['apellido'];
-                    $puesto = $dato['puesto'];
-                    header ("location:../index.php?nombre=$nombre&apellido=$apellido&puesto=$puesto");
+                    $_SESSION['id'] = $dato['id'];
+                    $_SESSION['nombre'] = $dato['nombre'];
+                    $_SESSION['apellido'] = $dato['apellido'];
+                    $_SESSION['puesto'] = $dato['puesto'];
+                    header ("location:../index.php");
 
                 }else{
 
