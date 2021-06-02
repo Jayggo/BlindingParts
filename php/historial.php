@@ -4,7 +4,8 @@
 
     require_once('connect.php');
     $connect = $conexion->getConn();
-    try { // HAGO PRIMERO EL INNER JOIN CON USUARIO Y USUARIO_REPUESTO
+
+    try { // HAGO LA CONSULTA CON INNER JOIN
     
         $sql = "SELECT usuario.email, usuario.puesto, repuesto.nombre, repuesto.descripcion,usuario_repuesto.fecha_asignacion FROM usuario_repuesto INNER JOIN usuario ON usuario.id = usuario_repuesto.id_usuario INNER JOIN repuesto ON repuesto.id = usuario_repuesto.id_repuesto";
         $resultado = $connect->query($sql);
@@ -13,7 +14,7 @@
         $error = $e->getMessage();
     }
 
-    $dato = array();
+    $dato = array(); // GUARDO LOS RESULTADOS EN UN ARRAY BIDIMENSIONAL
     while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
       array_push($dato, $row);
     }
@@ -95,6 +96,7 @@
             <div class = "mt-5 mb-3 tittle">
                 <h1 class = "font-weight-bold ">Historial de Asignaciones</h1>
             </div>
+            <!----------------------TABLE---------------------->
             <div class = "table-wrapper">
                 <table class="table table-bordered h-100 text-white" style = "width: 80%;">
                     <thead>

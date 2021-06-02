@@ -10,13 +10,13 @@
 .boton-asignar {
 
     text-decoration: none;
-    color: white;
+    color: #ffff;
 }
 
 .boton-asignar:hover{
 
     text-decoration: none;
-    color: black;
+    color: #0000;
 
 }
 

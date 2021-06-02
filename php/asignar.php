@@ -8,7 +8,7 @@
         $id_repuesto = $_GET['id_repuesto'];
         $fecha_asignacion = date("d-m-Y, h:i:s A");
 
-        try {
+        try { 
             require_once('connect.php');
 
             $connect = $conexion->getConn();
@@ -29,6 +29,10 @@
 
         }
 
+
+    }else{
+
+        header("location: ../index.php");
 
     }
 

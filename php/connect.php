@@ -1,16 +1,16 @@
 <?php
 
-class conexion{
+class conexion{ 
 
     private $conn;
 
-    public function __construct(){
+    public function __construct(){// CREO EL CONSTRUCTOR CON LA VARIABLE QUE ALMACENA LA CONEXION
 
         $this->conn = new mysqli("localhost","root","", "blindingparts");
     
     }
 
-    public function conectar(){ 
+    public function conectar(){ // VALIDO SI LA CONEXION TIENE ALGUN ERROR
 
         if (($this->conn)->connect_error){
     
@@ -20,7 +20,7 @@ class conexion{
 
     }
 
-    public function getConn(){ 
+    public function getConn(){ // DEVUELVO LA CONEXION
 
         return $this->conn;
 
@@ -28,10 +28,9 @@ class conexion{
 
 }
 
-$conexion = new conexion();
+$conexion = new conexion(); // CREO UN NUEVO OBJETO
 
-$conexion->conectar(); // Valida que no tenga ningun error al conectarse.
-
+$conexion->conectar(); 
 
 
 ?>

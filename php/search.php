@@ -1,6 +1,49 @@
 <?php
 
     session_start();
+
+    if (isset($_GET['search-form'])){
+
+        $search = $_GET['search-form'];
+        require_once('connect.php');
+        $connect = $conexion->getConn();
+        
+        try { 
+            
+            $sql = "SELECT id, nombre, descripcion, alto, ancho, largo, peso FROM repuesto WHERE nombre LIKE '%$search%' ";
+            $resultado = $connect->query($sql);
+    
+
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+
+        $repuesto = array();
+        while($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+
+            array_push($repuesto, $row);
+        }
+
+        if (!empty($repuesto)){ // VALIDO SI SE ENCONTRO ALGO EN LA BUSQUEDA
+
+            $message = ' ';
+
+        }else{
+
+            $message = 'No se han encontrado coincidencias con esta busqueda.';
+
+        }
+
+        mysqli_close($connect);
+    }else{
+
+        $message = " ";
+
+    }
+
+
+    
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -15,6 +58,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS-->
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/search.css">
     <!-- CSS Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- Custom Font-->
@@ -72,11 +116,41 @@
         }
     ?>
 
-    <header>
+    <div class = "wrapper">
         <div class = "background">
-                <div>SEARCH</div>
+            <div class = "search-tittle mt-5">
+                <h1>Resultados de busqueda</h1>
+                <form class="form-inline mt-3 search-form" action = "search.php" method = "get">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar repuestos..." aria-label="Search" name = "search-form">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <?php if (!empty($repuesto)){?>
+            <div class = "search-wrapper">
+                <?php
+                    for ($i=0; $i < count($repuesto) ; $i++) {   
+                ?>
+                    
+                <a href="repuesto.php?id=<?php echo $repuesto[$i]['id']?>" class = "content btn btn-outline-light">
+                    <h3 class = "font-weight-bold"><?php echo $repuesto[$i]['nombre'];?></h3>
+                    <p><?php echo $repuesto[$i]['descripcion'];?></p>
+                    <p>
+                        Alto: <?php echo $repuesto[$i]['alto'];?><br>
+                        Ancho: <?php echo $repuesto[$i]['ancho'];?><br>
+                        Largo: <?php echo $repuesto[$i]['largo'];?><br>
+                        Peso: <?php echo $repuesto[$i]['peso'];?>
+                    </p>
+                </a>
+                <?php }?>
+            </div>
+            <?php }else{?>    
+            <div class = "text-white font-weight-bold m-5"><?php echo $message;?></div>
+                <?php }?>
+           
         </div>
-    </header>
+    </div>
+
+    
 
 
 

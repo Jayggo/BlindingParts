@@ -2,7 +2,7 @@
 
     session_start();
 
-    try {
+    try { //  BUSCO LOS REPUESTOS EN LA BASE DE DATOS PARA MOSTRARLOS EN EL CAROUSEL
         require_once('php/connect.php');
 
         $connect = $conexion->getConn();
@@ -45,11 +45,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
 
 
-
-
   </head>
   <body>
 
+    <!---------------------------NAV---------------------------->        
     <div class="pos-f-t fixed-top">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class=" font-weight-bold text-white nav-container">
@@ -95,7 +94,7 @@
     <?php
         }
     ?>
-
+    <!---------------------------HEADER---------------------------->        
     <header>
         <div class = "background">
             <div class = "brand"><h1>BlindingParts SA</h1></div>
@@ -113,7 +112,7 @@
     </header>
 
     
-
+       <!---------------------------SECTION'S--------------------------->                 
     <div class ="section section-one"><p class = "p-5 font-weight-bold text-center">Bienvenido al portal en español de BlindingParts SA para mecánicos autorizados.</p></div>
 
     <div class ="section section-two"><p class = "p-5 font-weight-bold text-center">Aqui podrá visualizar las piezas y repuestos disponibles, seleccionar los necesarios y asignarlos a su cuenta.</p></div>
@@ -129,7 +128,7 @@
             <?php }?>
         </div>
     </div>
-    <!--------------------CAROUSEL------------------->
+    <!----------------------------CAROUSEL------------------------->
     <div class = "section section-four p-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -148,7 +147,7 @@
                     </div>
                 </div>
                 <?php
-                    for ($i=1; $i <3 ; $i++) { 
+                    for ($i=1; $i <3 ; $i++) { // MUESTRO 2 REPUESTOS EN EL CAROUSEL Y EL ACTIVE DE ARRIBA
                 ?>
                  <div class="carousel-item">
                     <img class="d-block w-100" src="img/sample-<?php echo ($i+1);?>.jpg" alt="First slide" height = "500px">
@@ -180,7 +179,7 @@
 
 
 
-
+     <!---------------------------FOOTER---------------------------->                     
     <footer class = "font-weight-bold">
       <div class ="footer-lists">
         <ul>

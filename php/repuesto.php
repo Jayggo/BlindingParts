@@ -21,8 +21,9 @@
         $dato = $resultado->fetch_assoc();
 
 
-        mysqli_close($connect);
+       
     }
+    mysqli_close($connect);
 ?>
 <!doctype html>
 <html lang="es">

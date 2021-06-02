@@ -20,7 +20,7 @@
 
                 if (isset($dato['email'])){
 
-                    session_start();
+                    session_start(); // INICIO LA SESION Y GUARDO TODOS LOS DATOS EN GLOBAL PARA USARLOS LUEGO
                     $_SESSION['email'] = $email;
                     $_SESSION['id'] = $dato['id'];
                     $_SESSION['nombre'] = $dato['nombre'];
@@ -125,8 +125,6 @@
                     <input type="email" class="form-control font-weight-bold" id="email-form" aria-describedby="emailHelp" placeholder="Ingresa el e-mail autorizado" name = "email">
                 </div>
                 <button type="submit" class="btn btn-outline-light font-weight-bold">Entrar</button>
-                
-
             </form>
             <small class = "ml-5 font-weight-bold text-danger">
                     <?php 
