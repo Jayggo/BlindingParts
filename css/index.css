@@ -133,6 +133,18 @@ header p{
 
 }
 
+.carousel-item img {
+
+    object-fit: cover;
+
+}
+
+.carousel-caption{
+
+    background: rgba(0,0,0,.4);
+
+}
+
 
 
 

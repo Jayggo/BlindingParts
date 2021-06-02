@@ -1,6 +1,28 @@
 <?php
 
     session_start();
+
+    if (isset($_GET['id'])){
+
+        $id = $_GET['id'];
+
+        try {
+            require_once('connect.php');
+
+            $connect = $conexion->getConn();
+
+            $sql = "SELECT * FROM repuesto WHERE id = '$id'";
+
+            $resultado = $connect->query($sql);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+        }
+
+        $dato = $resultado->fetch_assoc();
+
+
+        mysqli_close($connect);
+    }
 ?>
 <!doctype html>
 <html lang="es">
@@ -15,6 +37,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Custom CSS-->
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/repuesto.css">
     <!-- CSS Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">    
     <!-- Custom Font-->
@@ -69,11 +92,34 @@
         }
     ?>
 
-    <header>
+    <div class = "repuesto-container">
         <div class = "background">
-                <div>REPUESTO</div>
+                <div class = "repuesto-wrapper w-50 m-auto">
+                    <div class = "header">
+                        <h1 class = "font-weight-bold"><?php echo $dato['nombre'];?></h1>
+                        <h4 class = "text-justify"><?php echo $dato['descripcion'];?></h4>
+                    </div>
+                    <div class="specs my-5 ">
+                        Alto: <?php echo $dato['alto'];?><br>
+                        Largo: <?php echo $dato['largo'];?><br>
+                        Ancho: <?php echo $dato['ancho'];?><br>
+                        Peso: <?php echo $dato['peso'];?>
+                    </div>
+                    <?php 
+                            
+                         if (isset($_SESSION['nombre'])){
+                    ?>            
+                    <a href="asignar.php" class = "mt-5 font-weight-bold btn btn-outline-light w-50 m-auto d-flex justify-content-center boton-asignar">
+                        <?php echo "Asignar a ".$_SESSION['nombre']." ".$_SESSION['apellido'];?>
+                    </a>
+                    <?php }else{?>
+                        <a href="login.php" class = "mt-5 font-weight-bold btn btn-outline-light w-50 m-auto d-flex justify-content-center boton-asignar">
+                        Ingresar con e-mail autorizado para asignar
+                        </a>
+                    <?php }?>
+                </div>
         </div>
-    </header>
+    </div>
 
 
 

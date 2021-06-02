@@ -8,7 +8,32 @@
         $apellido = $_GET['apellido'];
         $puesto = $_GET['puesto'];
 
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['apellido'] = $apellido;
+        $_SESSION['puesto'] = $puesto;
     }
+
+    try {
+        require_once('php/connect.php');
+
+        $connect = $conexion->getConn();
+        $sql = "SELECT * FROM repuesto";
+        $resultado = $connect->query($sql);
+
+    } catch (Exception $e) {
+        
+        $error = $e->getMessage();
+    }
+
+    $dato = array();
+    while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
+      array_push($dato, $row);
+    }
+
+
+
+
+    mysqli_close($connect);
 ?>
 
 <!doctype html>
@@ -82,8 +107,8 @@
     <header>
         <div class = "background">
             <div class = "brand"><h1>BlindingParts SA</h1></div>
-            <p>¡Bienvenido<?php if(isset($nombre)){echo ", ".$nombre." ".$apellido;}?>!</p>
-            <p class = "font-italic"><?php if(isset($nombre)){echo $puesto;}?></p>
+            <p>¡Bienvenido<?php if(isset($_SESSION['nombre'])){echo ", ".$_SESSION['nombre']." ".$_SESSION['apellido'];}?>!</p>
+            <p class = "font-italic"><?php if(isset($_SESSION['nombre'])){echo $_SESSION['puesto'];}?></p>
             <?php
                 if (!isset($_SESSION['email'])){            
             ?>
@@ -122,32 +147,27 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="img/background-parts.jpg" alt="First slide" height = "500px">
+                    <img class="d-block w-100 image-one" src="img/sample-1.jpg" alt="First slide" height = "500px">
                     <div class = "carousel-caption d-md-block">
-                        <h3 class = "font-weight-bold">Presmutor AXE</h3>
-                        <p>Pieza polivalente que lleva el ciguenal externo</p>
-                        <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
-                        <a href="php/repuesto.php?" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
+                        <h3 class = "font-weight-bold"><?php echo $dato[0]['nombre'];?></h3>
+                        <p><?php echo $dato[0]['descripcion'];?></p>
+                        <p>Alto: <?php echo$dato[0]['alto'];?>, Ancho: <?php echo$dato[0]['ancho'];?>, Largo: <?php echo$dato[0]['largo'];?>, Peso: <?php echo$dato[0]['peso'];?></p>
+                        <a href="php/repuesto.php?id=<?php echo$dato[0]['id'];?>" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/background-parts.jpg" alt="Second slide" height = "500px">
+                <?php
+                    for ($i=1; $i <3 ; $i++) { 
+                ?>
+                 <div class="carousel-item">
+                    <img class="d-block w-100" src="img/sample-<?php echo ($i+1);?>.jpg" alt="First slide" height = "500px">
                     <div class = "carousel-caption d-md-block">
-                        <h3 class = "font-weight-bold">Presmutor AXE</h3>
-                        <p>Pieza polivalente que lleva el ciguenal externo</p>
-                        <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
-                        <a href="php/repuesto.php?" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
+                        <h3 class = "font-weight-bold"><?php echo $dato[$i]['nombre'];?></h3>
+                        <p><?php echo $dato[$i]['descripcion'];?></p>
+                        <p>Alto: <?php echo$dato[$i]['alto'];?>, Ancho: <?php echo$dato[$i]['ancho'];?>, Largo: <?php echo$dato[$i]['largo'];?>, Peso: <?php echo$dato[$i]['peso'];?></p>
+                        <a href="php/repuesto.php?id=<?php echo$dato[$i]['id'];?>" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="img/background-parts.jpg" alt="Third slide" height = "500px">
-                    <div class = "carousel-caption d-md-block">
-                        <h3 class = "font-weight-bold">Presmutor AXE</h3>
-                        <p>Pieza polivalente que lleva el ciguenal externo</p>
-                        <p>Alto: 80cm, Ancho: 2cm, Peso: 40kg</p>
-                        <a href="php/repuesto.php?" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
-                    </div>
-                </div>
+                <?php }?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
