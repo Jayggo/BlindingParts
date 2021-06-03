@@ -7,7 +7,7 @@
 
     try { // HAGO LA CONSULTA CON INNER JOIN
     
-        $sql = "SELECT usuario.email, usuario.puesto, repuesto.nombre, repuesto.descripcion,usuario_repuesto.fecha_asignacion FROM usuario_repuesto INNER JOIN usuario ON usuario.id = usuario_repuesto.id_usuario INNER JOIN repuesto ON repuesto.id = usuario_repuesto.id_repuesto";
+        $sql = "SELECT usuario.email, usuario.puesto, repuesto.nombre, repuesto.descripcion,usuario_repuesto.fecha_asignacion FROM usuario_repuesto INNER JOIN usuario ON usuario.id = usuario_repuesto.id_usuario INNER JOIN repuesto ON repuesto.id = usuario_repuesto.id_repuesto ORDER BY usuario_repuesto.fecha_asignacion DESC";
         $resultado = $connect->query($sql);
 
     } catch (Exception $e) {
@@ -113,7 +113,7 @@
                             for ($i=0; $i < count($dato); $i++) { 
                         ?>
                         <tr class = "font-weight-bold text-center">
-                        <th scope="row"><?php echo $dato[$i]['fecha_asignacion']?></th>
+                        <th scope="row" style = "background: rgba(194,132,60,.8); color: #000;"><?php echo $dato[$i]['fecha_asignacion']?></th>
                         <td><?php echo $dato[$i]['email']?></td>
                         <td><?php echo $dato[$i]['puesto']?></td>
                         <td><?php echo $dato[$i]['nombre']?></td>

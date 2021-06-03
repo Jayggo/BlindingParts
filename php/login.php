@@ -119,17 +119,17 @@
 
     <header>
         <div class = "background">
-            <form class = "w-50" action = "login.php" method = "post">
+            <form class = "w-50 login-form" action = "login.php" method = "post">
                 <div class="form-group">
                     <label for="email-form" class = " font-weight-bold">Entrar a tu cuenta</label>
                     <input type="email" class="form-control font-weight-bold" id="email-form" aria-describedby="emailHelp" placeholder="Ingresa el e-mail autorizado" name = "email">
                 </div>
                 <button type="submit" class="btn btn-outline-light font-weight-bold">Entrar</button>
             </form>
-            <small class = "ml-5 font-weight-bold text-danger">
+            <small class = "font-weight-bold text-danger text-center error-msg">
                     <?php 
                         if (!empty($message)){
-
+                            
                             echo $message;
 
                         }

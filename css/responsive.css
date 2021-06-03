@@ -195,6 +195,21 @@
 
     }
 
+    /*----------------LOGIN---------------*/
+
+    .login-form{
+
+        width: 80% !important;
+
+    }
+
+    .error-msg{
+
+       width: 70%;
+       margin-top: 10px;
+
+    }
+
 }
 
 @media screen and (max-width: 450px){

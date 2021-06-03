@@ -19,8 +19,36 @@
       array_push($dato, $row);
     }
 
+// ALGORITMO QUE GENERA NUMEROS ALEATORIOS.
+    $rand= array();
+    for ($i=0; $i < 3 ; $i++) { 
 
+      $random = rand(0,(count($dato)-1));// -1 PORQUE EMPIEZA DESDE EL 0 EL ARRAY.
 
+      if (!isset($rand)){ //VALIDO SI EL ARRAY ESTA SETEADO O NO PARA PUSHEARLE EL PRIMER VALOR
+
+        array_push($rand, $random);
+
+      }else{
+
+        if (in_array($random, $rand)){ // EVALUO SI EL ARRAY CONTIENE EL RANDOM ASIGNADO
+
+            do{
+
+                $random= rand(0,(count($dato)-1));
+
+            }while(in_array($random, $rand)); // SI YA LO TIENE, LO GENERO EN CICLO HASTA QUE SALGA UNO DISTINTO
+
+          array_push($rand, $random); // CUANDO SALGA, LO PUSHEO.
+
+        }else{
+
+          array_push($rand, $random);// SI NO LO CONTIENE LO PUSHEO.
+
+        }
+
+      }
+    }
 
     mysqli_close($connect);
 ?>
@@ -137,25 +165,16 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100 image-one" src="img/sample-1.jpg" alt="First slide" height = "500px">
-                    <div class = "carousel-caption d-md-block">
-                        <h3 class = "font-weight-bold"><?php echo $dato[0]['nombre'];?></h3>
-                        <p><?php echo $dato[0]['descripcion'];?></p>
-                        <p>Alto: <?php echo$dato[0]['alto'];?>, Ancho: <?php echo$dato[0]['ancho'];?>, Largo: <?php echo$dato[0]['largo'];?>, Peso: <?php echo$dato[0]['peso'];?></p>
-                        <a href="php/repuesto.php?id=<?php echo$dato[0]['id'];?>" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
-                    </div>
-                </div>
                 <?php
-                    for ($i=1; $i <3 ; $i++) { // MUESTRO 2 REPUESTOS EN EL CAROUSEL Y EL ACTIVE DE ARRIBA
+                    for ($i=0; $i <3 ; $i++) { 
                 ?>
-                 <div class="carousel-item">
-                    <img class="d-block w-100" src="img/sample-<?php echo ($i+1);?>.jpg" alt="First slide" height = "500px">
+                 <div class="carousel-item <?php if ($i==0){echo 'active';}?>">
+                    <img class="d-block w-100" src="img/sample-3.jpg" alt="First slide" height = "500px">
                     <div class = "carousel-caption d-md-block">
-                        <h3 class = "font-weight-bold"><?php echo $dato[$i]['nombre'];?></h3>
-                        <p><?php echo $dato[$i]['descripcion'];?></p>
-                        <p>Alto: <?php echo$dato[$i]['alto'];?>, Ancho: <?php echo$dato[$i]['ancho'];?>, Largo: <?php echo$dato[$i]['largo'];?>, Peso: <?php echo$dato[$i]['peso'];?></p>
-                        <a href="php/repuesto.php?id=<?php echo$dato[$i]['id'];?>" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
+                        <h3 class = "font-weight-bold"><?php echo $dato[$rand[$i]]['nombre'];?></h3>
+                        <p><?php echo $dato[$rand[$i]]['descripcion'];?></p>
+                        <p>Alto: <?php echo$dato[$rand[$i]]['alto'];?>, Ancho: <?php echo$dato[$rand[$i]]['ancho'];?>, Largo: <?php echo$dato[$rand[$i]]['largo'];?>, Peso: <?php echo$dato[$rand[$i]]['peso'];?></p>
+                        <a href="php/repuesto.php?id=<?php echo$dato[$rand[$i]]['id'];?>" class = "btn btn-outline-light font-weight-bold ">Ver más</a>
                     </div>
                 </div>
                 <?php }?>
