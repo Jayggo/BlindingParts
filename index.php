@@ -16,7 +16,7 @@
 
     $dato = array();
     while ($row = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
-      array_push($dato, $row);
+        array_push($dato, $row);
     }
 
 // ALGORITMO QUE GENERA NUMEROS ALEATORIOS.
@@ -134,7 +134,7 @@
             <a href="php/login.php" class = "btn btn-outline-light login-button">Ingrese con su e-mail autorizado</a>
             <?php }else{
             ?>
-             <a href="php/search.php" class = "btn btn-outline-light login-button">Buscar repuestos o piezas</a>
+             <a href="php/search.php?search-form=a" class = "btn btn-outline-light login-button">Buscar repuestos o piezas</a>
              <?php }?>
         </div>
     </header>
@@ -148,7 +148,7 @@
     <div class ="section section-three">
         <p class = "p-5 font-weight-bold text-center">¿Qué necesita en este momento?</p>
         <div>
-            <a href="php/search.php" class = "btn btn-outline-light  font-weight-bold">Buscar repuestos y piezas</a>
+            <a href="php/search.php?search-form=a" class = "btn btn-outline-light  font-weight-bold">Buscar repuestos y piezas</a>
             <?php if (!isset($_SESSION['email'])){?>
             <a href="php/login.php" class = "btn btn-outline-light font-weight-bold ">Ingresar a mi cuenta autorizada</a>
             <?php }else{?>
@@ -166,10 +166,10 @@
             </ol>
             <div class="carousel-inner">
                 <?php
-                    for ($i=0; $i <3 ; $i++) { 
+                    for ($i=0; $i <3 ; $i++) { // MUESTRO LOS REPUESTOS ALEATORIAMENTE CON MI ARRAY -RAND- 
                 ?>
                  <div class="carousel-item <?php if ($i==0){echo 'active';}?>">
-                    <img class="d-block w-100" src="img/sample-3.jpg" alt="First slide" height = "500px">
+                    <img class="d-block w-100" src="img/sample-<?php echo $i?>.jpg" alt="First slide" height = "500px">
                     <div class = "carousel-caption d-md-block">
                         <h3 class = "font-weight-bold"><?php echo $dato[$rand[$i]]['nombre'];?></h3>
                         <p><?php echo $dato[$rand[$i]]['descripcion'];?></p>
