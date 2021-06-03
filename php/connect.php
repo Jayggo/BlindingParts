@@ -4,7 +4,7 @@ class conexion{
 
     private $conn;
 
-    public function __construct(){// CREO EL CONSTRUCTOR CON LA VARIABLE QUE ALMACENA LA CONEXION
+    public function __construct(){//CREO EL CONSTRUCTOR CON LA VARIABLE QUE ALMACENA LA CONEXION
 
         $this->conn = new mysqli("localhost","root","", "blindingparts");
     
