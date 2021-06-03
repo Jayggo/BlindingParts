@@ -57,6 +57,7 @@
 <html lang="es">
   <head>
     <title>BlindingParts ES</title>
+    <link rel="shortcut icon" href="img/brake.png">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -166,7 +167,7 @@
             </ol>
             <div class="carousel-inner">
                 <?php
-                    for ($i=0; $i <3 ; $i++) { // MUESTRO LOS REPUESTOS ALEATORIAMENTE CON MI ARRAY -RAND- 
+                    for ($i=0; $i <3 ; $i++) { // MUESTRO LOS REPUESTOS ALEATORIAMENTE CON MI ARRAY RAND
                 ?>
                  <div class="carousel-item <?php if ($i==0){echo 'active';}?>">
                     <img class="d-block w-100" src="img/sample-<?php echo $i?>.jpg" alt="First slide" height = "500px">
@@ -189,13 +190,6 @@
             </a>
         </div>
     </div>
-
-
-
-
-
-
-
 
 
      <!---------------------------FOOTER---------------------------->                     
