@@ -1,2 +1,2 @@
 # BlindingParts
-Personal PHP project, description in branch master :)
+Personal PHP project, description on branch master :)
